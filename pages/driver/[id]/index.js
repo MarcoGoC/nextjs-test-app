@@ -1,4 +1,4 @@
-import Head from 'next/head'
+import Meta from '../../../components/template/meta'
 import Layout from '../../../components/layout'
 import { fetchData } from '../../../Lib/fetchData'
 import DriverTable from '../../../components/driverTable'
@@ -17,12 +17,11 @@ export async function getServerSideProps(context) {
 export default function Driver({ driverData, total }) {
 
   const name = `${driverData.StandingsLists[0].DriverStandings[0].Driver.givenName}  ${driverData.StandingsLists[0].DriverStandings[0].Driver.familyName}`
+
   return (
     <Layout>
 
-      <Head>
-        <title>Formula 1 - Driver Information</title>
-      </Head>
+      <Meta title="Formula 1 - Driver Information" />
 
       <h2 className="driver">{name}</h2>
 

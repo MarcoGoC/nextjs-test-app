@@ -1,6 +1,4 @@
-
-
-import Head from 'next/head'
+import Meta from '../../components/template/meta'
 import Layout from '../../components/layout'
 import { getData } from '../../Lib/fetchData'
 import SeasonTable from '../../components/seasonTable'
@@ -29,12 +27,11 @@ export async function getServerSideProps(context) {
 export default function Driver({ racesData, total }) {
 
   const season = `Season ${racesData.season}`
+
   return (
     <Layout>
 
-      <Head>
-        <title>Formula 1 - {season}</title>
-      </Head>
+      <Meta title={`Formula 1 - ${season}`} />
 
       <h2 className="title">{season}</h2>
 
@@ -54,7 +51,6 @@ export default function Driver({ racesData, total }) {
     </Layout>
   )
 }
-
 
 
 // export async function getStaticPaths() {

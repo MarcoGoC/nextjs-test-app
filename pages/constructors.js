@@ -1,4 +1,4 @@
-import Head from 'next/head'
+import Meta from '../components/template/meta'
 import Layout from '../components/layout'
 import { getData } from '../Lib/fetchData'
 import TeamsTable from '../components/teamsTable'
@@ -20,9 +20,7 @@ export default function Constructors({ contructorsData }) {
   return (
     <Layout>
 
-      <Head>
-        <title>Formula 1 - Teams</title>
-      </Head>
+      <Meta title="Formula 1 - Teams" />
 
       <main>
         <TeamsTable data={contructorsData}></TeamsTable>

@@ -1,4 +1,4 @@
-import Head from 'next/head'
+import Meta from '../components/template/meta'
 import Layout from '../components/layout'
 import { getData } from '../Lib/fetchData'
 import SeasonsTable from '../components/seasonsTable'
@@ -20,9 +20,7 @@ export default function Seasons({ seasonsData }) {
   return (
     <Layout>
 
-      <Head>
-        <title>Formula 1 - Seasons</title>
-      </Head>
+      <Meta title="Formula 1 - Seasons" />
 
       <main>
         <SeasonsTable data={seasonsData}></SeasonsTable>

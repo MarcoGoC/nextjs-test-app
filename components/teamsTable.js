@@ -17,11 +17,11 @@ export default function TeamsTable({ data }) {
           </tr>
         </thead>
         <tbody>
-          {data.Constructors.map((team) => (
-            <tr key={team.constructorId}>
-              <th scope="row">{team.name}</th>
-              <td data-title="Nationality">{team.nationality}</td>
-              <td data-title="Link"><a target='_blank' href={team.url}>Link</a></td>
+          {data.Constructors.map(({ constructorId, name, nationality, url }) => (
+            <tr key={constructorId}>
+              <th scope="row">{name}</th>
+              <td data-title="Nationality">{nationality}</td>
+              <td data-title="Link"><a target='_blank' href={url}>Link</a></td>
             </tr>
           ))}
         </tbody>

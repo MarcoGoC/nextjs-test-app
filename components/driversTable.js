@@ -21,19 +21,19 @@ export default function DriversTable({ data }) {
           </tr>
         </thead>
         <tbody>
-          {data.Drivers.map((driver) => (
-            <tr key={driver.driverId}>
-              <th scope="row" className="link"><Link href={`/driver/${driver.driverId}`}><a>{driver.givenName} {driver.familyName}</a></Link></th>
-              <td data-title="Code">{(driver.code) ? driver.code : <span>&nbsp;</span>}</td>
-              <td data-title="Number">{(driver.permanentNumber) ? driver.permanentNumber : <span>&nbsp;</span>}</td>
-              <td data-title="DOB">{driver.dateOfBirth}</td>
-              <td data-title="Nationality">{driver.nationality}</td>
+          {data.Drivers.map(({ driverId, givenName, familyName, code, permanentNumber, dateOfBirth, nationality, url }) => (
+            <tr key={driverId}>
+              <th scope="row" className="link"><Link href={`/driver/${driverId}`}><a>{givenName} {familyName}</a></Link></th>
+              <td data-title="Code">{(code) ? code : <span>&nbsp;</span>}</td>
+              <td data-title="Number">{(permanentNumber) ? permanentNumber : <span>&nbsp;</span>}</td>
+              <td data-title="DOB">{dateOfBirth}</td>
+              <td data-title="Nationality">{nationality}</td>
               <td data-title="Career" className="link">
-                <Link href={`/driver/${driver.driverId}`}>
+                <Link href={`/driver/${driverId}`}>
                   <a>Career</a>
                 </Link>
               </td>
-              <td data-title="Bio" className="link"><a target='_blank' href={driver.url}>Bio</a></td>
+              <td data-title="Bio" className="link"><a target='_blank' href={url}>Bio</a></td>
             </tr>
           ))}
         </tbody>

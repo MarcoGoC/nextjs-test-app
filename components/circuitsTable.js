@@ -19,13 +19,13 @@ export default function CircuitsTable({ data }) {
           </tr>
         </thead>
         <tbody>
-          {data.Circuits.map((circuit) => (
-            <tr key={circuit.circuitId}>
-              <th scope="row">{circuit.circuitName}</th>
-              <td data-title="Locality">{circuit.Location.locality}</td>
-              <td data-title="Country">{circuit.Location.country}</td>
-              <td data-title="Link"><a target='_blank' href={`https://www.google.com/maps/place/${circuit.Location.lat},${circuit.Location.long}`}>Map</a></td>
-              <td data-title="Link"><a target='_blank' href={circuit.url}>Link</a></td>
+          {data.Circuits.map(({ circuitId, circuitName, Location: { locality, country, lat, long }, url }) => (
+            <tr key={circuitId}>
+              <th scope="row">{circuitName}</th>
+              <td data-title="Locality">{locality}</td>
+              <td data-title="Country">{country}</td>
+              <td data-title="Link"><a target='_blank' href={`https://www.google.com/maps/place/${lat},${long}`}>Map</a></td>
+              <td data-title="Link"><a target='_blank' href={url}>Link</a></td>
             </tr>
           ))}
         </tbody>

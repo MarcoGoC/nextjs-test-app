@@ -1,4 +1,4 @@
-import Head from 'next/head'
+import Meta from '../components/template/meta'
 import Layout from '../components/layout'
 import { getData } from '../Lib/fetchData'
 import CircuitsTable from '../components/circuitsTable'
@@ -19,9 +19,7 @@ export default function Circuits({ circuitsData }) {
   return (
     <Layout>
 
-      <Head>
-        <title>Formula 1 - Circuits</title>
-      </Head>
+      <Meta title="Formula 1 - Circuits" />
 
       <main>
         <CircuitsTable data={circuitsData}></CircuitsTable>

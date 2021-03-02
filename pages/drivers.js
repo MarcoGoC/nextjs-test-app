@@ -1,4 +1,4 @@
-import Head from 'next/head'
+import Meta from '../components/template/meta'
 import Layout from '../components/layout'
 import { getData } from '../Lib/fetchData'
 import DriversTable from '../components/driversTable'
@@ -20,9 +20,7 @@ export default function Drivers({ driversData }) {
   return (
     <Layout>
 
-      <Head>
-        <title>Formula 1 - Drivers</title>
-      </Head>
+      <Meta title="Formula 1 - Drivers" />
 
       <main>
         <DriversTable data={driversData}></DriversTable>

@@ -25,17 +25,17 @@ export default function RaceResultsTable({ data }) {
           </tr>
         </thead>
         <tbody>
-          {results.map((position) => (
-            <tr key={position.Driver.driverId}>
-              <th scope="row">{position.position}</th>
-              <td data-title="Driver">{position.Driver.givenName} {position.Driver.familyName}</td>
-              <td data-title="Number">{position.number}</td>
-              <td data-title="Nationality">{position.Driver.nationality}</td>
-              <td data-title="Constructor">{position.Constructor.name}</td>
-              <td data-title="Points">{position.points}</td>
-              <td data-title="Laps">{position.laps}</td>
-              <td data-title="Time">{(position.Time) ? position.Time.time : <span>&nbsp;</span>}</td>
-              <td data-title="Status">{position.status}</td>
+          {results.map(({ position, Driver: { driverId, givenName, familyName, nationality }, Constructor: { name }, number, points, laps, Time, status }) => (
+            <tr key={driverId}>
+              <th scope="row">{position}</th>
+              <td data-title="Driver">{givenName} {familyName}</td>
+              <td data-title="Number">{number}</td>
+              <td data-title="Nationality">{nationality}</td>
+              <td data-title="Constructor">{name}</td>
+              <td data-title="Points">{points}</td>
+              <td data-title="Laps">{laps}</td>
+              <td data-title="Time">{(Time) ? Time.time : <span>&nbsp;</span>}</td>
+              <td data-title="Status">{status}</td>
             </tr>
           ))}
         </tbody>

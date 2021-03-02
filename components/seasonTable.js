@@ -22,18 +22,18 @@ export default function TestTable({ data, total }) {
           </tr>
         </thead>
         <tbody>
-          {races.map((race) => (
-            <tr key={race.round}>
-              <th scope="row">{race.round}</th>
-              <td data-title="Name">{race.raceName}</td>
-              <td data-title="Tracks">{race.Circuit.circuitName}</td>
-              <td data-title="Date">{race.date}</td>
+          {races.map(({ round, raceName, date, Circuit: { circuitName } }, url) => (
+            <tr key={round}>
+              <th scope="row">{round}</th>
+              <td data-title="Name">{raceName}</td>
+              <td data-title="Tracks">{circuitName}</td>
+              <td data-title="Date">{date}</td>
               <td data-title="Results">
-                <Link href={`/season/${season}/${race.round}`}>
+                <Link href={`/season/${season}/${round}`}>
                   <a>Results</a>
                 </Link>
               </td>
-              <td data-title="Review"><a href={race.url} target="_blank">Link</a></td>
+              <td data-title="Review"><a href={url} target="_blank">Link</a></td>
             </tr>
           ))}
         </tbody>

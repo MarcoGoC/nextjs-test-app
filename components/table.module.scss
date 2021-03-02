@@ -210,4 +210,14 @@ $border-color: #ff0b0254;
       }
     } 
   }
+
+  tr:hover, 
+  tr:focus,
+  tr:nth-of-type(even):hover {
+    background-color: #1a7ff336;
+    color: #0070f3;
+    a {
+      color: #0070f3;
+    }
+  }
 }
