@@ -1,8 +1,7 @@
 import Meta from '../components/template/meta'
 import Layout from '../components/layout'
 import { getData } from '../Lib/fetchData'
-import { dataForCircuits } from '../Lib/dataForTables'
-import Table from '../components/Table'
+import CircuitsTable from '../components/circuitsTable'
 
 
 export async function getStaticProps() {
@@ -17,18 +16,13 @@ export async function getStaticProps() {
 }
 
 export default function Circuits({ circuitsData }) {
-
-  const caption = "F1 Circuits Information"
-  const headings = ['Name', 'Locality', 'Country', 'Map', 'Wikipedia']
-  const rows = dataForCircuits(circuitsData, headings)
-
   return (
     <Layout>
 
       <Meta title="Formula 1 - Circuits" />
 
       <main>
-        <Table caption={caption} headings={headings} rows={rows} />
+        <CircuitsTable data={circuitsData}></CircuitsTable>
       </main>
 
     </Layout>

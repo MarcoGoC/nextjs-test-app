@@ -25,7 +25,7 @@ export default function Home() {
             <Link href="/drivers">
               <a>
                 <h3>Drivers</h3>
-                <p>Favourite drivers</p>
+                <p>All F1 drivers</p>
               </a>
             </Link>
           </div>

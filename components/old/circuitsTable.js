@@ -24,8 +24,8 @@ export default function CircuitsTable({ data }) {
               <th scope="row">{circuitName}</th>
               <td data-title="Locality">{locality}</td>
               <td data-title="Country">{country}</td>
-              <td data-title="Link"><a target='_blank' href={`https://www.google.com/maps/place/${lat},${long}`}>Map</a></td>
-              <td data-title="Link"><a target='_blank' href={url}>Link</a></td>
+              <td data-title="Map"><a target='_blank' href={`https://www.google.com/maps/place/${lat},${long}`}>Map</a></td>
+              <td data-title="Wikipedia"><a target='_blank' href={url}>Link</a></td>
             </tr>
           ))}
         </tbody>

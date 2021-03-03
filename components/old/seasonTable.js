@@ -1,4 +1,4 @@
-import styles from './table.module.scss'
+import styles from '../table.module.scss'
 import Link from 'next/link'
 
 

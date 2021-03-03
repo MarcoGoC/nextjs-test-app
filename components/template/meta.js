@@ -14,7 +14,7 @@ export default function Meta({ title, keywords, description }) {
 }
 
 Meta.defaultProps = {
-  title: 'F1 Stats XXXXXXXXXXXXXXX- Test App',
+  title: 'F1 Stats - Test App',
   keywords: 'formula 1, statistics, testing app',
   description: 'Stats from the Formula 1 circus',
 }

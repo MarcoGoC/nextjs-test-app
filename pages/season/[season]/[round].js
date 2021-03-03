@@ -1,43 +1,49 @@
 import Meta from '../../../components/template/meta'
 import Layout from '../../../components/layout'
-import { getData } from '../../../Lib/fetchData'
-import RaceResultsTable from '../../../components/raceResultsTable'
+import { fetchData } from '../../../Lib/fetchData'
+import { dataForRace } from '../../../Lib/dataForTables'
+import Table from '../../../components/Table'
 
 
 export async function getServerSideProps(context) {
-  console.log('context = ', context.params)
-  const allData = getData('2020-16')
-  const resultsData = JSON.parse(allData.fileContents).MRData.RaceTable.Races[0]
+
+  const { season, round } = context.params
+  const allData = await fetchData(`${season}/${round}/results.json`)
+  const resultsData = allData.MRData.RaceTable.Races[0]
+
   return {
     props: { resultsData }
   }
 }
 
-// export async function getServerSideProps({season, round}) {
-//   const allData = await fetchData(`${season}/${round}/results`)
-//   const total = allData.MRData.total
-//   const resultsData = allData.MRData.StandingsTable
-
-//   return {
-//     props: { resultsData, total }
-//   }
-// }
-
 export default function Driver({ resultsData }) {
 
-  const season = `Season ${resultsData.season}`
+  const caption = `Season ${resultsData.season} ${resultsData.raceName}`
+  const headings = ['Position', 'Driver', 'Number', 'Nationality', 'Constructor', 'Points', 'Laps', 'Time', 'Status']
+  const rows = dataForRace(resultsData, headings)
+
   return (
     <Layout>
 
       <Meta title="Formula 1 - {season}" />
 
       <main>
-        <RaceResultsTable data={resultsData}></RaceResultsTable>
+        <Table caption={caption} headings={headings} rows={rows} />
       </main>
 
     </Layout>
   )
 }
+
+
+// export async function getServerSideProps(context) {
+//   console.log('context = ', context.params)
+//   const allData = getData('2020-16')
+//   const resultsData = JSON.parse(allData.fileContents).MRData.RaceTable.Races[0]
+//   return {
+//     props: { resultsData }
+//   }
+// }
 
 
 // export async function getStaticPaths() {

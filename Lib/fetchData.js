@@ -23,11 +23,11 @@ export function getData(fileId) {
 
 // Fetch data from api
 
-export async function fetchData(driverId) {
+export async function fetchData(url) {
 
-  console.log('DriverId = ', driverId)
+  console.log('url = ', `http://ergast.com/api/f1/${url}`)
 
-  const res = await fetch(`http://ergast.com/api/f1/drivers/${driverId}/driverStandings.json`)
+  const res = await fetch(`http://ergast.com/api/f1/${url}`)
   const data = await res.json()
 
   return data
