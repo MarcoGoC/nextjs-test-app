@@ -8,15 +8,25 @@ import Table from '../../../components/Table'
 export async function getServerSideProps(context) {
 
   const { season, round } = context.params
-  const allData = await fetchData(`${season}/${round}/results.json`)
-  const resultsData = allData.MRData.RaceTable.Races[0]
+
+  const { errorCode, data } = await fetchData(`${season}/${round}/results.json`)
+
+  const resultsData = data.MRData.RaceTable.Races[0]
 
   return {
-    props: { resultsData }
+    props: { errorCode, resultsData }
   }
 }
 
-export default function Driver({ resultsData }) {
+export default function Driver({ errorCode, resultsData }) {
+
+  if (errorCode || resultsData.length === 0) {
+    return (
+      <Layout>
+        <Error statusCode={errorCode} title="We could not found data for this topic" />
+      </Layout>
+    )
+  }
 
   const caption = `Season ${resultsData.season} ${resultsData.raceName}`
   const headings = ['Position', 'Driver', 'Number', 'Nationality', 'Constructor', 'Points', 'Laps', 'Time', 'Status']

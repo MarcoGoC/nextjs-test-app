@@ -43,7 +43,7 @@ export default function DriverTable({ data, total }) {
                   <td data-title="Wins">{standing.wins}</td>
                   <td data-title="Constructor">
                     {standing.Constructors.map((constructor) => (
-                      <span key={constructor.name}>{constructor.name} </span>
+                      <span key={constructor.name} ><a target='_blank' href={constructor.url}>{constructor.name}</a> </span>
                     ))}
                   </td>
                 </>

@@ -1,35 +1,35 @@
 import Meta from '../../../components/template/meta'
 import Layout from '../../../components/layout'
 import { fetchData } from '../../../Lib/fetchData'
-// import { getData } from '../../../Lib/fetchData'
 import { dataForSeasonTeamStandings } from '../../../Lib/dataForTables'
 import Table from '../../../components/Table'
+import Error from 'next/error'
 
 
 export async function getServerSideProps(context) {
 
   const { season } = context.params
 
-  const allData = await fetchData(`${season}/constructorStandings.json`)
-  const standingsData = allData.MRData.StandingsTable.StandingsLists
+  const { errorCode, data } = await fetchData(`${season}/constructorStandings.json`)
+
+  const standingsData = data.MRData.StandingsTable.StandingsLists
 
   return {
-    props: { standingsData }
+    props: { errorCode, standingsData }
   }
 }
 
-// export async function getServerSideProps(context) {
 
-//   console.log(' params = ', context.params)
-//   const allData = getData('2020TeamsResults')
-//   const standingsData = JSON.parse(allData.fileContents).MRData.StandingsTable.StandingsLists
+export default function Driver({ errorCode, standingsData }) {
 
-//   return {
-//     props: { standingsData }
-//   }
-// }
+  if (errorCode || standingsData.length === 0) {
+    return (
+      <Layout>
+        <Error statusCode={errorCode} title="We could not found data for this topic" />
+      </Layout>
+    )
+  }
 
-export default function Driver({ standingsData }) {
 
   const season = `Season ${standingsData[0].season}`
 

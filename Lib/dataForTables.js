@@ -43,9 +43,9 @@ export function dataForSeasons(data, headings) {
   let rows = data.Seasons.map(({ season, url }) => [
     { title: headings[0], text: season, id: season, thFlag: true },
     { title: headings[1], url: `/season/${season}`, type: 'link', atext: 'Season Races' },
-    { title: headings[1], url: `/season/${season}/drivers`, type: 'link', atext: 'Driver Standings' },
-    { title: headings[1], url: `/season/${season}/teams`, type: 'link', atext: 'Team Standings' },
-    { title: headings[2], url: url, type: 'url', atext: 'Review' }
+    { title: headings[2], url: `/season/${season}/drivers`, type: 'link', atext: 'Driver Standings' },
+    { title: headings[3], url: `/season/${season}/teams`, type: 'link', atext: 'Team Standings' },
+    { title: headings[4], url: url, type: 'url', atext: 'Review' }
   ])
 
 
@@ -124,7 +124,7 @@ export function dataForSeasonDriverStandings(data, headings) {
     { title: headings[3], text: points },
     { title: headings[4], text: wins },
     { title: headings[5], text: nationality },
-    { title: headings[6], text: Constructors[0].name },
+    { title: headings[6], text: (Constructors[0]) ? Constructors[0].name : <span>&nbsp;</span> },
   ])
 
   return rows

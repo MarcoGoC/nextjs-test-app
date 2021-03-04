@@ -19,6 +19,7 @@ a:focus {
   color: #850703; 
 }
 
+h1.pageTitle , 
 h2.pageTitle {
   margin-top: 0.5em;
   font-size: 2.5em;
