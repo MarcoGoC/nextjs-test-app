@@ -1,11 +1,12 @@
 import Meta from '../components/template/meta'
 import Layout from '../components/layout'
 import { getData } from '../Lib/fetchData'
-import { dataForSeasons, dataForSeasonTeamStandings } from '../Lib/dataForTables'
+import { dataForSeasons } from '../Lib/dataForTables'
 import Table from '../components/Table'
 
 
 export async function getStaticProps() {
+
   const allData = getData('seasons')
   const seasonsData = JSON.parse(allData.fileContents).MRData.SeasonTable
 

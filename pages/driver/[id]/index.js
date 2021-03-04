@@ -8,16 +8,26 @@ export async function getServerSideProps(context) {
 
   const { id } = context.params
 
-  const allData = await fetchData(`drivers/${id}/driverStandings.json`)
-  const total = allData.MRData.total
-  const driverData = allData.MRData.StandingsTable
+  const { errorCode, data } = await fetchData(`drivers/${id}/driverStandings.json`)
+
+  const total = data.MRData.total
+  const driverData = data.MRData.StandingsTable
 
   return {
-    props: { driverData, total }
+    props: { errorCode, driverData, total }
   }
 }
 
-export default function Driver({ driverData, total }) {
+export default function Driver({ errorCode, driverData, total }) {
+
+  if (errorCode || driverData.length === 0) {
+    return (
+      <Layout>
+        <Error statusCode={errorCode} title="We could not found data for this topic" />
+      </Layout>
+    )
+  }
+
 
   const { givenName, familyName } = driverData.StandingsLists[0].DriverStandings[0].Driver
 

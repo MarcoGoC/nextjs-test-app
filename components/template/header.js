@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types'
+import propTypes from 'prop-types'
 import styles from './layout.module.css'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -28,8 +28,8 @@ Header.defaultProps = {
   home: false
 }
 
-Header.PropTypes = {
+Header.propTypes = {
 
   // inidcates the current page is home (true) otherwise it displays link to the home page
-  home: PropTypes.bool,
+  home: propTypes.bool,
 }

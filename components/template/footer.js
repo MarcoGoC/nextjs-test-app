@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types'
+import propTypes from 'prop-types'
 import styles from './layout.module.css'
 import Link from 'next/link'
 
@@ -25,8 +25,8 @@ Footer.defaultProps = {
   home: false
 }
 
-Footer.PropTypes = {
+Footer.propTypes = {
 
   // inidcates the current page is NOT home (true), it displays a link to the home page
-  home: PropTypes.bool,
+  home: propTypes.bool,
 }

@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types'
+import propTypes from 'prop-types'
 import styles from './table.module.scss'
 import Link from 'next/link'
 
@@ -55,14 +55,14 @@ export default function Table({ caption, headings, rows }) {
 //        { title: 'data-title4', text: 'cell-text' }]
 //
 
-Table.PropTypes = {
+Table.propTypes = {
 
   // Caption text for the table 
-  caption: PropTypes.string,
+  caption: propTypes.string,
 
   // Columns titles for each cell in the same order as the rows
-  headings: PropTypes.array,
+  headings: propTypes.array,
 
   //page description 
-  rows: PropTypes.array
+  rows: propTypes.array
 }
