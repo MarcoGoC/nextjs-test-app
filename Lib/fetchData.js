@@ -40,12 +40,12 @@ export function OLD_getData(fileId) {
 
   const fileNames = fs.readdirSync(dataDirectory)
 
-  path.join(postsDirectory, `${id}.md`)
+  path.join(postsDirectory, `${id}.json`)
 
   console.log(fileNames)
 
   const allData = fileNames.map(fileName => {
-    const id = fileName.replace(/\.md$/, '')
+    const id = fileName.replace(/\.json$/, '')
 
     if (fileId == id) {
       const fullPath = path.join(dataDirectory, fileName)

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import styles from './table.module.scss'
 import Link from 'next/link'
 
@@ -36,4 +37,32 @@ export default function Table({ caption, headings, rows }) {
       </table>
     </div >
   )
+}
+
+//
+// Rows types 
+//    Row Title = first cell of the row must have a thFlag = true and id 
+//    type = Link => uses router Link for internal navigation
+//    type = url => link to a an extrenal site 
+//    if no type => is a regular cell data 
+// see examples below
+//
+//  caption: 'F1 Stats - Test App',
+//  headings: ['Col-Title1', 'Col-Title2'],
+//  rows: [{ title: 'data-title1', text: 'row title', id: 'Id-1', thFlag: true },
+//        { title: 'data-title2', url: '/', type: 'link', atext: 'link-text' },
+//        { title: 'data-title3', url: '/', type: 'url', atext: 'a-text' },
+//        { title: 'data-title4', text: 'cell-text' }]
+//
+
+Table.PropTypes = {
+
+  // Caption text for the table 
+  caption: PropTypes.string,
+
+  // Columns titles for each cell in the same order as the rows
+  headings: PropTypes.array,
+
+  //page description 
+  rows: PropTypes.array
 }

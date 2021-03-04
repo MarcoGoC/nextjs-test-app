@@ -29,20 +29,11 @@ export default function Driver({ racesData, total }) {
 
       <Meta title={`Formula 1 - ${season}`} />
 
-      <h2 className="title">{season}</h2>
+      <h2 className="pageTitle">{season}</h2>
 
       <main>
         <Table caption={caption} headings={headings} rows={rows} />
       </main>
-
-      <style jsx>{`
-        .title {
-          margin-top: 0.5em;
-          font-size: 2.5em;
-          text-align: center;
-          color: #8b0303bf;
-        }
-      `}</style>
 
     </Layout>
   )
