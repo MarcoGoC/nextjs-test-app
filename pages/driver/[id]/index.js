@@ -19,27 +19,18 @@ export async function getServerSideProps(context) {
 
 export default function Driver({ driverData, total }) {
 
-  const name = `${driverData.StandingsLists[0].DriverStandings[0].Driver.givenName}  ${driverData.StandingsLists[0].DriverStandings[0].Driver.familyName}`
+  const { givenName, familyName } = driverData.StandingsLists[0].DriverStandings[0].Driver
 
   return (
     <Layout>
 
       <Meta title="Formula 1 - Driver Information" />
 
-      <h2 className="driver">{name}</h2>
+      <h2 className="pageTitle">{givenName} {familyName}</h2>
 
       <main>
         <DriverTable data={driverData} total={total}></DriverTable>
       </main>
-
-      <style jsx>{`
-        .driver {
-          margin-top: 0.5em;
-          font-size: 2.5em;
-          text-align: center;
-          color: #8b0303bf;
-        }
-      `}</style>
 
     </Layout>
   )

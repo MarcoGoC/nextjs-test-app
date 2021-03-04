@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import Head from 'next/head'
 
 export default function Meta({ title, keywords, description }) {
@@ -17,4 +18,15 @@ Meta.defaultProps = {
   title: 'F1 Stats - Test App',
   keywords: 'formula 1, statistics, testing app',
   description: 'Stats from the Formula 1 circus',
+}
+
+Meta.PropTypes = {
+  // Title of the page 
+  title: PropTypes.string,
+
+  // Keywords for the page/site 
+  keywords: PropTypes.string,
+
+  //page description 
+  description: PropTypes.string
 }

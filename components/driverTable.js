@@ -38,7 +38,7 @@ export default function DriverTable({ data, total }) {
               <td data-title="Rounds">{season.round}</td>
               {season.DriverStandings.map((standing) => (
                 <>
-                  <td data-title="Points">{standing.points}</td>
+                  <td data-title="Points" key={`td-${season.season}-${standing.points}`}>{standing.points}</td>
                   <td data-title="Position">{standing.position}</td>
                   <td data-title="Wins">{standing.wins}</td>
                   <td data-title="Constructor">

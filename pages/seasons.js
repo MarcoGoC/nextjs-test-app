@@ -1,7 +1,7 @@
 import Meta from '../components/template/meta'
 import Layout from '../components/layout'
 import { getData } from '../Lib/fetchData'
-import { dataForSeasons } from '../Lib/dataForTables'
+import { dataForSeasons, dataForSeasonTeamStandings } from '../Lib/dataForTables'
 import Table from '../components/Table'
 
 
@@ -20,7 +20,7 @@ export async function getStaticProps() {
 export default function Seasons({ seasonsData }) {
 
   const caption = 'F1 Seasons Information'
-  const headings = ['Season', 'Races', 'Wikipedia']
+  const headings = ['Season', 'Races', 'Driver Standings', 'Team Standings', 'Wikipedia']
   const rows = dataForSeasons(seasonsData, headings)
 
   return (
