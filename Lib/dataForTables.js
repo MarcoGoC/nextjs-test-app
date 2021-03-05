@@ -4,9 +4,7 @@ export function dataForCircuits(data, headings) {
 
   //headings = ['Name', 'Locality', 'Country', 'Map', 'Wikipedia']
 
-  let rows = []
-
-  data.Circuits.map(({ circuitId, circuitName, Location: { locality, country, lat, long }, url }) => [
+  let rows = data.Circuits.map(({ circuitId, circuitName, Location: { locality, country, lat, long }, url }) => [
     { id: circuitId, thFlag: true, text: circuitName, title: headings[0] },
     { text: locality, title: headings[1] },
     { text: country, title: headings[2] },
@@ -95,6 +93,7 @@ export function dataForDrivers(data, headings) {
 
   // headings = ['Name', 'Code', 'Number', 'DOB', 'Nationality', 'Career', 'Bio']
 
+  const season = data.season
   let rows = data.Drivers.map(({ driverId, givenName, familyName, code, permanentNumber, dateOfBirth, nationality, url }) => [
     { title: headings[0], text: `${givenName} ${familyName}`, id: driverId, thFlag: true },
     { title: headings[1], text: (code) ? code : <span>&nbsp;</span> },
