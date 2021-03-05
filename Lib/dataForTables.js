@@ -6,15 +6,13 @@ export function dataForCircuits(data, headings) {
 
   let rows = []
 
-  data.Circuits.map(({ circuitId, circuitName, Location: { locality, country, lat, long }, url }) => (
-    rows.push(Object.assign({},
-      [{ id: circuitId, thFlag: true, text: circuitName, title: headings[0] },
-      { text: locality, title: headings[1] },
-      { text: country, title: headings[2] },
-      { url: `https://www.google.com/maps/place/${lat},${long}`, type: 'url', atext: 'Map', title: headings[3] },
-      { url: url, type: 'url', atext: 'Link', title: headings[4] }]
-    ))
-  ))
+  data.Circuits.map(({ circuitId, circuitName, Location: { locality, country, lat, long }, url }) => [
+    { id: circuitId, thFlag: true, text: circuitName, title: headings[0] },
+    { text: locality, title: headings[1] },
+    { text: country, title: headings[2] },
+    { url: `https://www.google.com/maps/place/${lat},${long}`, type: 'url', atext: 'Map', title: headings[3] },
+    { url: url, type: 'url', atext: 'Link', title: headings[4] }
+  ])
 
   return rows
 }
@@ -97,7 +95,6 @@ export function dataForDrivers(data, headings) {
 
   // headings = ['Name', 'Code', 'Number', 'DOB', 'Nationality', 'Career', 'Bio']
 
-  const season = data.season
   let rows = data.Drivers.map(({ driverId, givenName, familyName, code, permanentNumber, dateOfBirth, nationality, url }) => [
     { title: headings[0], text: `${givenName} ${familyName}`, id: driverId, thFlag: true },
     { title: headings[1], text: (code) ? code : <span>&nbsp;</span> },
