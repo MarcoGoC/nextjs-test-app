@@ -10,6 +10,7 @@ export default function Header({ home }) {
       {home ? (
         <>
           <Image priority src="/images/f1_logo.svg" width={130} height={33} alt="F1 logo (tm)" />
+          <h1 className="hidden">Formula 1 Stats</h1>
         </>
       ) : (
           <>
@@ -18,6 +19,7 @@ export default function Header({ home }) {
                 <Image priority src="/images/f1_logo.svg" width={130} height={33} alt="F1 logo (tm)" />
               </a>
             </Link>
+            <h1 className="hidden">Formula 1 Stats</h1>
           </>
         )}
     </header>
